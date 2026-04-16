@@ -10,7 +10,6 @@
   outputs = { nixpkgs, ... } @ inputs: {
     nixosConfigurations.guillermo = {
       guillermo = pkgs.lib.nixosSystem {
-        inherit system;
         modules = [ 
           ./nixos/configuration.nix 
         ];
