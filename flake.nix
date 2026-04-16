@@ -8,7 +8,7 @@
   };
 
   outputs = { nixpkgs, ... } @ inputs: {
-    nixosConfigurations.guillermo = pkgs.lib.nixosSystem {
+    nixosConfigurations.guillermo = nixpkgs.lib.nixosSystem {
       modules = [ 
         ./nixos/configuration.nix 
       ];
