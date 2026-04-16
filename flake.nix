@@ -8,12 +8,10 @@
   };
 
   outputs = { nixpkgs, ... } @ inputs: {
-    nixosConfigurations.guillermo = {
-      guillermo = pkgs.lib.nixosSystem {
-        modules = [ 
-          ./nixos/configuration.nix 
-        ];
-      };
+    nixosConfigurations.guillermo = pkgs.lib.nixosSystem {
+      modules = [ 
+        ./nixos/configuration.nix 
+      ];
     };
   };
 }
