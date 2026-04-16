@@ -107,9 +107,6 @@
     defaultEditor = true;
   };
 
-  # Install Dank Material Shell
-  # programs.dms-shell.enable = true;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
