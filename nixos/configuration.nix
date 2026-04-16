@@ -108,6 +108,8 @@
       enable = true;
       defaultEditor = true;
     };
+
+    htop.enable = true;
   };
 
   # List packages installed in system profile. To search, run:
