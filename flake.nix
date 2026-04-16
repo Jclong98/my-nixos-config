@@ -7,11 +7,14 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, ... } @ inputs: {
-    nixosConfigurations.guillermo = nixpkgs.lib.nixosSystem {
-      modules = [ 
-        ./nixos/configuration.nix 
-      ];
+  outputs =
+    { nixpkgs, ... }@inputs:
+    {
+      specialArgs = { inherit inputs; };
+      nixosConfigurations.guillermo = nixpkgs.lib.nixosSystem {
+        modules = [
+          ./nixos/configuration.nix
+        ];
+      };
     };
-  };
 }
