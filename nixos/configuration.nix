@@ -45,6 +45,9 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  # Enable the OpenSSH daemon.
+  services.openssh.enable = true;
+
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
@@ -87,24 +90,24 @@
     ];
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
+  
+  programs = {
+    firefox.enable = true;
 
-  # Install git
-  programs.git = {
-    enable = true;
-    config = {
-      user.name = "Jacob Long";
-      user.email = "jclong98@gmail.com";
-      init.defaultBranch = "main";
-      pull.rebase = true;
+    git = {
+      enable = true;
+      config = {
+        user.name = "Jacob Long";
+        user.email = "jclong98@gmail.com";
+        init.defaultBranch = "main";
+        pull.rebase = true;
+      };
     };
-  };
 
-  # Install NeoVim
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+    };
   };
 
   # List packages installed in system profile. To search, run:
@@ -117,25 +120,16 @@
     nixfmt
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ 8080 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
 
   system.stateVersion = "25.11";
 
-  systemd.targets.sleep.enable = false;
-  systemd.targets.suspend.enable = false;
-  systemd.targets.hibernate.enable = false;
-  systemd.targets.hybrid-sleep.enable = false;
+  systemd.targets = {
+    sleep.enable = false;
+    suspend.enable = false;
+    hibernate.enable = false;
+    hybrid-sleep.enable = false;
+  }
 }
