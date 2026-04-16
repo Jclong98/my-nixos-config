@@ -10,8 +10,6 @@
     ./hardware-configuration.nix
   ];
 
-  programs.nix-ld.enable = true;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -110,6 +108,9 @@
     };
 
     htop.enable = true;
+
+    # allows vscode remote-ssh to work from other machines
+    nix-ld.enable = true;
   };
 
   # List packages installed in system profile. To search, run:
