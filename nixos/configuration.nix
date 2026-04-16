@@ -12,6 +12,9 @@
 
   programs.nix-ld.enable = true;
 
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
   # Enable Flake commands
   nix.settings.experimental-features = [
     "nix-command"

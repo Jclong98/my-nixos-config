@@ -8,17 +8,10 @@
   };
 
   outputs =
-    { self, nixpkgs, ... }@inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config = { allowUnfree = true; };
-      };
-    in
+    { nixpkgs, ... }@inputs:
     {
+      specialArgs = { inherit inputs; };
       nixosConfigurations.guillermo = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
         modules = [
           ./nixos/configuration.nix
         ];
