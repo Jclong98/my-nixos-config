@@ -91,6 +91,7 @@
       simulation-distance = 10;
       level-seed = "2026-04-16";
       motd = "👉😎👉";
+      white-list = true;
     };
 
     whitelist = {
