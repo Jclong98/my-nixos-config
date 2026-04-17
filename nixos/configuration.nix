@@ -76,6 +76,13 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  # minecraft server
+  # services.mincraft-server = {
+  #   enable = true;
+  #   eula = true;
+  #   openFirewall = true;
+  # };
+
   users.users.guillermo = {
     isNormalUser = true;
     description = "guillermo";
@@ -107,6 +114,14 @@
       defaultEditor = true;
     };
 
+    vscode = {
+      enable = true;
+      extensions = with pkgs.vscode-extensions; [
+        PKief.material-icon-theme
+        bbenoist.nix
+      ];
+    };
+
     htop.enable = true;
 
     # allows vscode remote-ssh to work from other machines
@@ -119,7 +134,6 @@
     wget
     docker
     fastfetch
-    vscode.fhs
     nixfmt
   ];
 
