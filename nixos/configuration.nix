@@ -77,11 +77,26 @@
   # services.xserver.libinput.enable = true;
 
   # minecraft server
-  # services.mincraft-server = {
-  #   enable = true;
-  #   eula = true;
-  #   openFirewall = true;
-  # };
+  services.mincraft-server = {
+    enable = true;
+    eula = true;
+    openFirewall = true;
+    dataDir = "/home/guillermo/Desktop/minecraft-server";
+
+    declarative = true;
+
+    serverProperties = {
+      gamemode = "survival";
+      difficulty = "hard";
+      simulation-distance = 10;
+      level-seed = "2026-04-16";
+      motd = "👉😎👉";
+    };
+
+    whitelist = {
+      jclong98 = "c097aec3-ac9a-4997-a8e9-9822e6b7b07c";
+    };
+  };
 
   users.users.guillermo = {
     isNormalUser = true;
@@ -117,7 +132,6 @@
     vscode = {
       enable = true;
       extensions = with pkgs.vscode-extensions; [
-        PKief.material-icon-theme
         bbenoist.nix
       ];
     };
