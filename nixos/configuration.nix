@@ -77,7 +77,7 @@
   # services.xserver.libinput.enable = true;
 
   # minecraft server
-  services.mincraft-server = {
+  services.minecraft-server = {
     enable = true;
     eula = true;
     openFirewall = true;
