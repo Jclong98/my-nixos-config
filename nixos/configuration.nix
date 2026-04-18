@@ -28,6 +28,10 @@
 
   networking.networkmanager.enable = true;
 
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [ 8080 ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+
   time.timeZone = "America/Phoenix";
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -75,103 +79,6 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-
-  # minecraft server
-  # by default, this places the server in /var/lib/minecraft
-  services.minecraft-server = {
-    enable = true;
-    eula = true;
-    openFirewall = true;
-
-    declarative = true;
-
-    serverProperties = {
-      gamemode = "survival";
-      difficulty = "hard";
-      simulation-distance = 10;
-      level-seed = "2026-04-16";
-      motd = "👉😎👉";
-      white-list = true;
-    };
-
-    whitelist = {
-      jclong98 = "c097aec3-ac9a-4997-a8e9-9822e6b7b07c";
-    };
-  };
-
-  # ollama
-  services.ollama = {
-    enable = true;
-    openFirewall = true;
-
-    loadModels = [
-      "gemma4:e2b"
-    ];
-  };
-
-  # open-webui (port 8080 by default)
-  services.open-webui = {
-    enable = true;
-    openFirewall = true;
-    host = "0.0.0.0";
-  };
-
-  users.users.guillermo = {
-    isNormalUser = true;
-    description = "guillermo";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
-    packages = with pkgs; [
-      kdePackages.kate
-    ];
-  };
-
-  
-  programs = {
-    firefox.enable = true;
-
-    git = {
-      enable = true;
-      config = {
-        user.name = "Jacob Long";
-        user.email = "jclong98@gmail.com";
-        init.defaultBranch = "main";
-        pull.rebase = true;
-      };
-    };
-
-    neovim = {
-      enable = true;
-      defaultEditor = true;
-    };
-
-    vscode = {
-      enable = true;
-      extensions = with pkgs.vscode-extensions; [
-        bbenoist.nix
-      ];
-    };
-
-    htop.enable = true;
-
-    # allows vscode remote-ssh to work from other machines
-    nix-ld.enable = true;
-  };
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    wget
-    docker
-    fastfetch
-    nixfmt
-  ];
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ 8080 ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
 
   system.stateVersion = "25.11";
 

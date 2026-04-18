@@ -14,6 +14,10 @@
       nixosConfigurations.guillermo = nixpkgs.lib.nixosSystem {
         modules = [
           ./nixos/configuration.nix
+          ./modules/desktop.nix
+          ./modules/llm.nix
+          ./modules/minecraft.nix
+          ./modules/users-programs.nix
         ];
       };
     };
