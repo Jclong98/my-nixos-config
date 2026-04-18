@@ -17,7 +17,7 @@
           ./modules/desktop.nix
           ./modules/llm.nix
           ./modules/minecraft.nix
-          ./modules/users-programs.nix
+          ./modules/programs.nix
         ];
       };
     };
