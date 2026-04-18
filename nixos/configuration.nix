@@ -77,11 +77,11 @@
   # services.xserver.libinput.enable = true;
 
   # minecraft server
+  # by default, this places the server in /var/lib/minecraft
   services.minecraft-server = {
     enable = true;
     eula = true;
     openFirewall = true;
-    dataDir = "/home/guillermo/Desktop/minecraft-server";
 
     declarative = true;
 
@@ -97,6 +97,23 @@
     whitelist = {
       jclong98 = "c097aec3-ac9a-4997-a8e9-9822e6b7b07c";
     };
+  };
+
+  # ollama
+  services.ollama = {
+    enable = true;
+    openFirewall = true;
+
+    loadModels = [
+      "gemma4:e2b"
+    ];
+  };
+
+  # open-webui (port 8080 by default)
+  services.open-webui = {
+    enable = true;
+    openFirewall = true;
+    host = "0.0.0.0";
   };
 
   users.users.guillermo = {
