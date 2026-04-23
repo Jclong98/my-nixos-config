@@ -15,8 +15,8 @@
         modules = [
           ./nixos/configuration.nix
           ./modules/desktop.nix
-          ./modules/llm.nix
-          ./modules/minecraft.nix
+          # ./modules/llm.nix
+          # ./modules/minecraft.nix
           ./modules/programs.nix
         ];
       };
