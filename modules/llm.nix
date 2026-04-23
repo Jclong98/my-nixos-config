@@ -17,9 +17,4 @@
   #   openFirewall = true;
   #   host = "0.0.0.0";
   # };
-
-  # services.llama-swap = {
-  #   enable = true;
-  #   openFirewall = true;
-  # };
 }

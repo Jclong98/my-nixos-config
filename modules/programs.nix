@@ -50,6 +50,6 @@
     docker
     fastfetch
     nixfmt
-    llama-cpp
+    llama-cpp-vulkan
   ];
 }
