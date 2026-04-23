@@ -51,5 +51,4 @@
     fastfetch
     nixfmt
   ];
-
 }
