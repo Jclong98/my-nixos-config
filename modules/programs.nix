@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   users.users.guillermo = {
@@ -51,5 +51,6 @@
     fastfetch
     nixfmt
     llama-cpp-vulkan
+    inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.pi
   ];
 }
