@@ -50,5 +50,6 @@
     docker
     fastfetch
     nixfmt
+    llama-cpp
   ];
 }
