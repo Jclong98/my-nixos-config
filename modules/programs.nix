@@ -1,3 +1,7 @@
+# Shell integrations, system packages, and user configuration.
+# This module handles: program shell completions, system-wide packages,
+# git config, nix-ld (for VS Code remote SSH), and the user account.
+
 { config, pkgs, ... }:
 
 {
@@ -40,11 +44,11 @@
 
     htop.enable = true;
 
-    # allows vscode remote-ssh to work from other machines
+    # Allows VS Code remote-SSH to work from other machines.
     nix-ld.enable = true;
   };
 
-  # List packages installed in system profile.
+  # System-wide packages available in all shells.
   environment.systemPackages = with pkgs; [
     wget
     docker

@@ -1,12 +1,11 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+# Main system configuration for guillermo
+# A KDE Plasma 6 desktop with development tools.
+# Loaded by flake.nix → nixos/configuration.nix
 
 { inputs, config, pkgs, ... }:
 
 {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
 
@@ -15,36 +14,28 @@
 
   # Enable Flake commands
   nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
+    nix-command
+    flakes
   ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "guillermo"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.hostName = "guillermo";
 
   networking.networkmanager.enable = true;
 
-  # Open ports in the firewall.
+  # Open ports in the firewall (used by open-webui on port 8080).
   networking.firewall.allowedTCPPorts = [ 8080 ];
   networking.firewall.allowedUDPPorts = [ 8080 ];
 
   time.timeZone = "America/Phoenix";
   i18n.defaultLocale = "en_US.UTF-8";
 
+  # All locale settings to English (US).
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
+    LC_ALL = "en_US.UTF-8";
   };
 
   # Enable the OpenSSH daemon.
@@ -63,15 +54,13 @@
     pulse.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  system.stateVersion = "25.11";
-
+  # Never sleep, suspend, or hibernate (always-on machine).
   systemd.targets = {
     sleep.enable = false;
     suspend.enable = false;
     hibernate.enable = false;
     hybrid-sleep.enable = false;
   };
+
+  system.stateVersion = "26.05";
 }

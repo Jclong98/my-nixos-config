@@ -1,3 +1,8 @@
+# Local LLM services: Ollama (GPU-accelerated via Vulkan) and Open WebUI.
+# To enable, uncomment the import in flake.nix and rebuild.
+#
+# Open WebUI provides a web-based chat interface at :8080.
+
 { config, pkgs, ... }:
 
 {

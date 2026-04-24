@@ -1,8 +1,13 @@
+# Minecraft Java Edition server (declarative mode).
+# To enable, uncomment the import in flake.nix and rebuild.
+#
+# The server is managed via /var/lib/minecraft and its configuration
+# is fully declarative — server.properties, whitelist, etc. are all
+# defined in this file.
+
 { config, pkgs, ... }:
 
 {
-  # minecraft server
-  # by default, this places the server in /var/lib/minecraft
   services.minecraft-server = {
     enable = true;
     eula = true;
@@ -23,5 +28,4 @@
       jclong98 = "c097aec3-ac9a-4997-a8e9-9822e6b7b07c";
     };
   };
-
 }
