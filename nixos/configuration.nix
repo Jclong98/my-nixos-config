@@ -20,7 +20,7 @@
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariabes = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "guillermo";
   networking.networkmanager.enable = true;
@@ -53,7 +53,7 @@
   };
 
   # Docker daemon.
-  services.docker.enable = true;
+  virtualisation.docker.enable = true;
 
   # Console keymap.
   console.keyMap = "us";
@@ -83,9 +83,9 @@
     ];
 
     programs.git = {
-      userName = "Jacob Long";
-      userEmail = "jclong98@gmail.com";
-      extraConfig.pull.rebase = true;
+      settings.user.name = "Jacob Long";
+      settings.user.email = "jclong98@gmail.com";
+      settings.pull.rebase = true;
     };
 
     home.stateVersion = "26.05";

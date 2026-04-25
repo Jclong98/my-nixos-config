@@ -17,7 +17,7 @@
           ./nixos/configuration.nix
           ./modules/desktop.nix
           ./modules/programs.nix
-          home-manager.nixosModule
+          home-manager.nixosModules.home-manager
         ];
       };
     };
