@@ -73,20 +73,5 @@
     options = "--delete-older-than 7d";
   };
 
-  # Home Manager — per-user dotfiles, packages, and programs.
-  home-manager.users.guillermo = {
-    home.packages = with pkgs; [
-      kdePackages.kate
-    ];
-
-    programs.git = {
-      settings.user.name = "Jacob Long";
-      settings.user.email = "jclong98@gmail.com";
-      settings.pull.rebase = true;
-    };
-
-    home.stateVersion = "26.05";
-  };
-
   system.stateVersion = "26.05";
 }
