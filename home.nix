@@ -12,7 +12,6 @@
     programs.git = {
       settings.user.name = "Jacob Long";
       settings.user.email = "jclong98@gmail.com";
-      settings.pull.rebase = true;
     };
 
     home.stateVersion = "26.05";
