@@ -20,10 +20,9 @@
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.canTouchEfiVariabes = true;
 
   networking.hostName = "guillermo";
-
   networking.networkmanager.enable = true;
 
   # Open ports in the firewall (used by open-webui on port 8080).
@@ -45,7 +44,6 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -54,12 +52,43 @@
     pulse.enable = true;
   };
 
+  # Docker daemon.
+  services.docker.enable = true;
+
+  # Console keymap.
+  console.keyMap = "us";
+
   # Never sleep, suspend, or hibernate (always-on machine).
   systemd.targets = {
     sleep.enable = false;
     suspend.enable = false;
     hibernate.enable = false;
     hybrid-sleep.enable = false;
+  };
+
+  # Garbage collection for always-on machine.
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
+
+  # Home Manager.
+  home-manager.users.guillermo = {
+    home.username = "guillermo";
+    home.homeDirectory = "/home/guillermo";
+
+    home.packages = with pkgs; [
+      kdePackages.kate
+    ];
+
+    programs.git = {
+      userName = "Jacob Long";
+      userEmail = "jclong98@gmail.com";
+      extraConfig.pull.rebase = true;
+    };
+
+    home.stateVersion = "26.05";
   };
 
   system.stateVersion = "26.05";

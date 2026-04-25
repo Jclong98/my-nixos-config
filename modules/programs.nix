@@ -1,6 +1,6 @@
 # Shell integrations, system packages, and user configuration.
 # This module handles: program shell completions, system-wide packages,
-# git config, nix-ld (for VS Code remote SSH), and the user account.
+# nix-ld (for VS Code remote SSH), and the user account.
 
 { config, pkgs, ... }:
 
@@ -12,9 +12,6 @@
       "networkmanager"
       "wheel"
     ];
-    packages = with pkgs; [
-      kdePackages.kate
-    ];
   };
 
   programs = {
@@ -22,12 +19,6 @@
 
     git = {
       enable = true;
-      config = {
-        user.name = "Jacob Long";
-        user.email = "jclong98@gmail.com";
-        init.defaultBranch = "main";
-        pull.rebase = true;
-      };
     };
 
     neovim = {
