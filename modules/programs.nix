@@ -1,10 +1,11 @@
-# Shell integrations, system packages, and user configuration.
-# This module handles: program shell completions, system-wide packages,
-# nix-ld (for VS Code remote SSH), and the user account.
+# Shell integrations, system packages, and the NixOS user account setup.
+# Home Manager (configuration.nix) handles per-user dotfiles and programs.
 
 { config, pkgs, ... }:
 
 {
+  # System user account — groups and basic info.
+  # Per-user config (dotfiles, git, etc.) is in home-manager.
   users.users.guillermo = {
     isNormalUser = true;
     description = "guillermo";
@@ -17,6 +18,7 @@
   programs = {
     firefox.enable = true;
 
+    # Git shell completions (system-wide). Per-user git config is in home-manager.
     git = {
       enable = true;
     };

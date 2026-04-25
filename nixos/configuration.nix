@@ -73,11 +73,8 @@
     options = "--delete-older-than 7d";
   };
 
-  # Home Manager.
+  # Home Manager — per-user dotfiles, packages, and programs.
   home-manager.users.guillermo = {
-    home.username = "guillermo";
-    home.homeDirectory = "/home/guillermo";
-
     home.packages = with pkgs; [
       kdePackages.kate
     ];
