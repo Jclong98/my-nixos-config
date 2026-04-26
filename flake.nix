@@ -17,7 +17,6 @@
           ./nixos/configuration.nix
           ./modules/desktop.nix
           ./modules/programs.nix
-          ./modules/llm.nix
           home-manager.nixosModules.home-manager
           ./home.nix
         ];
