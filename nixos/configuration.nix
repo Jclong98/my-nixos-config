@@ -26,8 +26,8 @@
   networking.networkmanager.enable = true;
 
   # Open ports in the firewall (used by open-webui on port 8080).
-  networking.firewall.allowedTCPPorts = [ 8080 ];
-  networking.firewall.allowedUDPPorts = [ 8080 ];
+  networking.firewall.allowedTCPPorts = [ 8080 3333 ];
+  networking.firewall.allowedUDPPorts = [ 8080 3333 ];
 
   time.timeZone = "America/Phoenix";
   i18n.defaultLocale = "en_US.UTF-8";

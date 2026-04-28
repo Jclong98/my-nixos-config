@@ -18,6 +18,7 @@
           ./modules/desktop.nix
           ./modules/programs.nix
           ./home.nix
+          ./modules/llama-swap.nix
         ];
       };
     };
