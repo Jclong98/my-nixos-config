@@ -49,5 +49,6 @@
     fastfetch
     nixfmt
     llama-cpp-vulkan
+    home-manager
   ];
 }

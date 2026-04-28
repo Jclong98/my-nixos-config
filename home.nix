@@ -1,9 +1,13 @@
 # Home Manager configuration for guillermo.
 # Loaded via home-manager.nixosModules.home-manager in flake.nix.
 
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+  ];
+
   home-manager.users.guillermo = {
     home.packages = with pkgs; [
       kdePackages.kate
