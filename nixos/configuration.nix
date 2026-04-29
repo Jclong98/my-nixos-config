@@ -52,6 +52,8 @@
     pulse.enable = true;
   };
 
+  services.hardware.openrgb.enable = true;
+
   # Docker daemon.
   virtualisation.docker.enable = true;
 

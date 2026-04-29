@@ -15,9 +15,9 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./nixos/configuration.nix
+          ./home.nix
           ./modules/desktop.nix
           ./modules/programs.nix
-          ./home.nix
           ./modules/llama-swap.nix
         ];
       };
