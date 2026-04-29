@@ -22,6 +22,7 @@ in
       };
 
       models = {
+        # extra flags are recommended by https://huggingface.co/Qwen/Qwen3.6-27B
         "qwen3.6-35b-a3b" = {
           cmd = "${llama-server} --port \${PORT} -m ${modelPath}/Qwen3.6-35B-A3B/Qwen3.6-35B-A3B-UD-Q4_K_M.gguf --mmproj ${modelPath}/Qwen3.6-35B-A3B/mmproj-BF16.gguf --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --presence-penalty 0.0 --repeat-penalty 1.0";
           name = "Qwen3.6 35B A3B";
