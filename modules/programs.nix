@@ -13,6 +13,7 @@
       "networkmanager"
       "wheel"
       "docker"
+      "openrgb"
     ];
   };
 
