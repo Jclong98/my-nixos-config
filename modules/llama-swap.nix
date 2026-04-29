@@ -38,14 +38,14 @@ in
         };
 
         "gemma-4-31b-it" = {
-          cmd = "${llama-server} --port \${PORT} -m ${modelPath}/gemma-4-31B-it/gemma-4-31B-it-Q4_K_M.gguf --mmproj ${modelPath}/gemma-4-31B-it/mmproj-BF16.gguf";
+          cmd = "${llama-server} --port \${PORT} -m ${modelPath}/gemma-4-31B-it/gemma-4-31B-it-Q4_K_M.gguf --mmproj ${modelPath}/gemma-4-31B-it/mmproj-BF16.gguf --temp 1.0 --top-p 0.95 --top-k 64";
           name = "Gemma 4 31B IT";
           description = "Unsloth Gemma 4 31B Instruction-Tuned, Q4 quantized, multimodal";
           ttl = 3600;
         };
 
         "gemma-4-e4b-it" = {
-          cmd = "${llama-server} --port \${PORT} -m ${modelPath}/gemma-4-E4B-it/gemma-4-E4B-it-Q4_K_M.gguf --mmproj ${modelPath}/gemma-4-E4B-it/mmproj-BF16.gguf";
+          cmd = "${llama-server} --port \${PORT} -m ${modelPath}/gemma-4-E4B-it/gemma-4-E4B-it-Q4_K_M.gguf --mmproj ${modelPath}/gemma-4-E4B-it/mmproj-BF16.gguf --temp 1.0 --top-p 0.95 --top-k 64";
           name = "Gemma 4 E4B IT";
           description = "Unsloth Gemma 4 E4B Instruction-Tuned, Q4 quantized, multimodal";
           ttl = 3600;
