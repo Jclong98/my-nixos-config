@@ -11,6 +11,14 @@ Activate your changes:
 sudo nixos-rebuild switch --flake .#guillermo
 ```
 
+## Updating packages
+
+Running the following command will update the `flake.lock`.
+
+```sh
+nix flake update
+```
+
 ## LLM
 
 ## run a model
