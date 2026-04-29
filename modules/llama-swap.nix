@@ -23,14 +23,14 @@ in
 
       models = {
         "qwen3.6-35b-a3b" = {
-          cmd = "${llama-server} --port \${PORT} -m ${modelPath}/Qwen3.6-35B-A3B/Qwen3.6-35B-A3B-UD-Q4_K_M.gguf --mmproj ${modelPath}/Qwen3.6-35B-A3B/mmproj-BF16.gguf";
+          cmd = "${llama-server} --port \${PORT} -m ${modelPath}/Qwen3.6-35B-A3B/Qwen3.6-35B-A3B-UD-Q4_K_M.gguf --mmproj ${modelPath}/Qwen3.6-35B-A3B/mmproj-BF16.gguf --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --presence-penalty 0.0 --repetition-penalty 1.0";
           name = "Qwen3.6 35B A3B";
           description = "Unsloth Qwen3.6 35B A3B, Q4 quantized";
           ttl = 3600;
         };
 
         "qwen3.6-27b" = {
-          cmd = "${llama-server} --port \${PORT} -m ${modelPath}/Qwen3.6-27B/Qwen3.6-27B-Q4_K_M.gguf --mmproj ${modelPath}/Qwen3.6-27B/mmproj-BF16.gguf";
+          cmd = "${llama-server} --port \${PORT} -m ${modelPath}/Qwen3.6-27B/Qwen3.6-27B-Q4_K_M.gguf --mmproj ${modelPath}/Qwen3.6-27B/mmproj-BF16.gguf --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --presence-penalty 0.0 --repetition-penalty 1.0";
           name = "Qwen3.6 27B";
           description = "Unsloth Qwen3.6 27B, Q4 quantized";
           ttl = 3600;
