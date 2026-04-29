@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   llama-cpp = pkgs.llama-cpp-vulkan;
@@ -12,15 +17,36 @@ in
     listenAddress = "0.0.0.0";
 
     settings = {
-      macros ={
+      macros = {
         default_ctx = 128000;
       };
 
       models = {
-        "qwen3-35b-a3b" = {
-          cmd = "${llama-server} --port \${PORT} -m ${modelPath}/Qwen3.6-35B-A3B-UD-Q4_K_M.gguf";
+        "qwen3.6-35b-a3b" = {
+          cmd = "${llama-server} --port \${PORT} -m ${modelPath}/Qwen3.6-35B-A3B/Qwen3.6-35B-A3B-UD-Q4_K_M.gguf";
           name = "Qwen3.6 35B A3B";
           description = "Unsloth Qwen3.6 35B A3B, Q4 quantized";
+          ttl = 3600;
+        };
+
+        "qwen3.6-27b" = {
+          cmd = "${llama-server} --port \${PORT} -m ${modelPath}/Qwen3.6-27B/Qwen3.6-27B-Q4_K_M.gguf";
+          name = "Qwen3.6 27B";
+          description = "Unsloth Qwen3.6 27B, Q4 quantized";
+          ttl = 3600;
+        };
+
+        "gemma-4-31b-it" = {
+          cmd = "${llama-server} --port \${PORT} -m ${modelPath}/gemma-4-31B-it/gemma-4-31B-it-Q4_K_M.gguf --mmproj ${modelPath}/gemma-4-31B-it/mmproj-BF16.gguf";
+          name = "Gemma 4 31B IT";
+          description = "Unsloth Gemma 4 31B Instruction-Tuned, Q4 quantized, multimodal";
+          ttl = 3600;
+        };
+
+        "gemma-4-e4b-it" = {
+          cmd = "${llama-server} --port \${PORT} -m ${modelPath}/gemma-4-E4B-it/gemma-4-E4B-it-Q4_K_M.gguf --mmproj ${modelPath}/gemma-4-E4B-it/mmproj-BF16.gguf";
+          name = "Gemma 4 E4B IT";
+          description = "Unsloth Gemma 4 E4B Instruction-Tuned, Q4 quantized, multimodal";
           ttl = 3600;
         };
       };
