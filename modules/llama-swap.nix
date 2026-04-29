@@ -12,6 +12,10 @@ in
     listenAddress = "0.0.0.0";
 
     settings = {
+      macros ={
+        default_ctx = 128000;
+      };
+
       models = {
         "qwen3-35b-a3b" = {
           cmd = "${llama-server} --port \${PORT} -m ${modelPath}";
