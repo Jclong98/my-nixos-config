@@ -3,7 +3,7 @@
 let
   llama-cpp = pkgs.llama-cpp-vulkan;
   llama-server = lib.getExe' llama-cpp "llama-server";
-  modelPath = "/var/lib/llama-swap/models/Qwen3.6-35B-A3B-UD-Q4_K_M.gguf";
+  modelPath = "/var/lib/llama-swap/models";
 in
 {
   services.llama-swap = {
@@ -18,7 +18,7 @@ in
 
       models = {
         "qwen3-35b-a3b" = {
-          cmd = "${llama-server} --port \${PORT} -m ${modelPath}";
+          cmd = "${llama-server} --port \${PORT} -m ${modelPath}/Qwen3.6-35B-A3B-UD-Q4_K_M.gguf";
           name = "Qwen3.6 35B A3B";
           description = "Unsloth Qwen3.6 35B A3B, Q4 quantized";
           ttl = 3600;
