@@ -6,7 +6,18 @@
 }:
 
 let
-  llama-cpp = pkgs.llama-cpp-vulkan;
+  # https://www.return12.net/building-latest-llama-cpp-on-nixos/
+  # https://github.com/ggml-org/llama.cpp/releases
+  llama-cpp = pkgs.llama-cpp-vulkan.overrideAttrs(attrs: rec {
+    version = "8990";
+    src = pkgs.fetchFromGitHub {
+      owner = "ggml-org";
+      repo = "llama.cpp";
+      tag = "b${version}";
+      hash = "sha256-Sxntd1QxnZu/xiFDbW2tVjOlYkw/VpZuh/Ehkw7vfs0=";
+    };
+    npmDepsHash = "sha256-iYJB0z2YHG8OzEA9EwHUZrDa5obr5m2sbnIH+of28o0=";
+  });
   llama-server = lib.getExe' llama-cpp "llama-server";
   modelPath = "/var/lib/llama-swap/models";
 in
