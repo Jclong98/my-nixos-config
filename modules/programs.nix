@@ -51,6 +51,6 @@
     nixfmt
     llama-cpp-vulkan
     home-manager
-    intel-gpu-tools
+    nvtopPackages.intel
   ];
 }
