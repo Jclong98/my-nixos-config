@@ -57,7 +57,7 @@ in
         };
 
         "gemma-4-26B-A4B-it-UD-Q8_K_XL" = {
-          cmd = "${llama-server} --port \${PORT} -m ${modelPath}/gemma-4-26B-A4B-it-UD-Q8_K_XL/gemma-4-26B-A4B-it-UD-Q8_K_XL-Q4_K_M.gguf --mmproj ${modelPath}/gemma-4-26B-A4B-it-UD-Q8_K_XL/mmproj-BF16.gguf --temp 1.0 --top-p 0.95 --top-k 64";
+          cmd = "${llama-server} --port \${PORT} -m ${modelPath}/gemma-4-26B-A4B-it-UD-Q8_K_XL/gemma-4-26B-A4B-it-UD-Q8_K_XL.gguf --mmproj ${modelPath}/gemma-4-26B-A4B-it-UD-Q8_K_XL/mmproj-BF16.gguf --temp 1.0 --top-p 0.95 --top-k 64";
           name = "Gemma 4 26B A4B";
           description = "Unsloth Gemma 4 26B A4B Instruction-Tuned, Q4 quantized, multimodal";
           ttl = 3600;
