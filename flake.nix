@@ -19,6 +19,7 @@
           ./modules/desktop.nix
           ./modules/programs.nix
           ./modules/llama-swap.nix
+          ./modules/openrgb.nix
         ];
       };
     };
