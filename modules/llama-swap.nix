@@ -9,19 +9,28 @@ let
   # https://www.return12.net/building-latest-llama-cpp-on-nixos/
   # https://github.com/ggml-org/llama.cpp/releases
   llama-cpp = pkgs.llama-cpp-vulkan.overrideAttrs(attrs: rec {
-    version = "8990";
+    version = "9037";
     src = pkgs.fetchFromGitHub {
       owner = "ggml-org";
       repo = "llama.cpp";
       tag = "b${version}";
-      hash = "sha256-Sxntd1QxnZu/xiFDbW2tVjOlYkw/VpZuh/Ehkw7vfs0=";
+
+      # when building, it'll be like "specified this but expected this"
+      # just copy the expected hash from the error message and put it here.
+      hash = "sha256-ZwSBWsn9h3Av18xI24iqraWhmv+xzutP+++aSw9y1tU=";
     };
-    npmDepsHash = "sha256-iYJB0z2YHG8OzEA9EwHUZrDa5obr5m2sbnIH+of28o0=";
+
+    # same here, just copy the expected hash from the error message when building.
+    npmDepsHash = "sha256-k62LIbyY2DXvs7XXbX0lNPiYxuYzeJUyQtS4eA+68f8=";
   });
   llama-server = lib.getExe' llama-cpp "llama-server";
   modelPath = "/var/lib/llama-swap/models";
 in
 {
+  # add llama-cpp to the system packages.
+  # this will be merged and *should* use the version from the overrideAttrs above.
+  environment.systemPackages = [ llama-cpp ];
+
   services.llama-swap = {
     enable = true;
     openFirewall = true;

@@ -48,7 +48,6 @@
     docker
     fastfetch
     nixfmt
-    llama-cpp-vulkan
     home-manager
     nvtopPackages.intel
   ];
