@@ -23,23 +23,23 @@ let
       state=0
 
       set_color() {
-        openrgb -d 0 -c "$1" -q
+        openrgb -c "$1"
       }
 
       # Set initial idle color
       set_color "$IDLE_COLOR"
 
       while true; do
-        # Check for established connections on the LLM port
         if ss -tn sport = :"$PORT" | grep -q ESTAB; then
           last_active=$(date +%s)
-          if [[ $state -ne 1 ]]; then
+          if [ "$state" != "1" ]; then
             set_color "$ACTIVE_COLOR"
             state=1
           fi
         else
           now=$(date +%s)
-          if (( now - last_active > TIMEOUT && state -eq 1 )); then
+          elapsed=$(( now - last_active ))
+          if [ "$elapsed" -gt "$TIMEOUT" ] && [ "$state" = "1" ]; then
             set_color "$IDLE_COLOR"
             state=0
           fi
@@ -67,13 +67,13 @@ in
 
     idleColor = lib.mkOption {
       type = lib.types.str;
-      default = "000000";
+      default = "FFFF33";
       description = "Hex color (RRGGBB) when the LLM is idle";
     };
 
     timeoutSeconds = lib.mkOption {
       type = lib.types.int;
-      default = 5;
+      default = 3;
       description = "Seconds of no traffic before switching back to idle color";
     };
 
