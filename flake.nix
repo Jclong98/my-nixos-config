@@ -20,6 +20,7 @@
           ./modules/programs.nix
           ./modules/llama-swap.nix
           ./modules/openrgb.nix
+          ./modules/llm-rgb.nix
         ];
       };
     };
