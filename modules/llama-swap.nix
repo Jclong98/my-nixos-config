@@ -18,6 +18,11 @@ let
       # when building, it'll be like "specified this but expected this"
       # just copy the expected hash from the error message and put it here.
       hash = "sha256-ZwSBWsn9h3Av18xI24iqraWhmv+xzutP+++aSw9y1tU=";
+      leaveDotGit = true;
+      postFetch = ''
+        git -C "$out" rev-parse --short HEAD > $out/COMMIT
+        find "$out" -name .git -print0 | xargs -0 rm -rf
+      '';
     };
 
     # same here, just copy the expected hash from the error message when building.
