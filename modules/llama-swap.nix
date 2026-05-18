@@ -83,6 +83,46 @@ in
           ttl = 3600;
         };
 
+        "qwen3.6-35b-a3b-mtp" = {
+          cmd = "${llama-server} 
+            --port \${PORT} 
+            -m ${modelPath}/Qwen3.6-35B-A3B-MTP/Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf 
+            --mmproj ${modelPath}/Qwen3.6-35B-A3B-MTP/mmproj-BF16.gguf 
+            --temp 0.6 
+            --top-p 0.95 
+            --top-k 20 
+            --min-p 0.0 
+            --presence-penalty 0.0 
+            --repeat-penalty 1.0
+            -fa on
+            -np 1
+            --spec-type draft-mtp 
+            --spec-draft-n-max 3";
+          name = "Qwen3.6 35B A3B MTP";
+          description = "Unsloth Qwen3.6 35B A3B MTP, Q4_K_XL quantized, multimodal";
+          ttl = 3600;
+        };
+
+        "qwen3.6-27b-mtp" = {
+          cmd = "${llama-server} 
+            --port \${PORT} 
+            -m ${modelPath}/Qwen3.6-27B-MTP/Qwen3.6-27B-UD-Q4_K_XL.gguf 
+            --mmproj ${modelPath}/Qwen3.6-27B-MTP/mmproj-BF16.gguf 
+            --temp 0.6 
+            --top-p 0.95 
+            --top-k 20 
+            --min-p 0.0 
+            --presence-penalty 0.0 
+            --repeat-penalty 1.0
+            -fa on
+            -np 1
+            --spec-type draft-mtp 
+            --spec-draft-n-max 3";
+          name = "Qwen3.6 27B MTP";
+          description = "Unsloth Qwen3.6 27B MTP, Q4_K_XL quantized, multimodal";
+          ttl = 3600;
+        };
+
         "gemma-4-31b-it" = {
           cmd = "${llama-server} 
             --port \${PORT} 
