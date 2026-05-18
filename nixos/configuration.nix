@@ -74,12 +74,12 @@
   };
 
   # LLM RGB — turns fans red when the LLM is responding
-  services.llm-rgb = {
-    enable = false;
-    activeColor = "FF0000";  # red while generating
-    idleColor = "FFFF33";    # yellow when idle
-    port = 8080;
-  };
+  # services.llm-rgb = {
+  #   enable = false;
+  #   activeColor = "FF0000";  # red while generating
+  #   idleColor = "FFFF33";    # yellow when idle
+  #   port = 8080;
+  # };
 
   system.stateVersion = "26.05";
 }
