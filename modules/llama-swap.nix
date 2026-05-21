@@ -9,7 +9,7 @@ let
   # https://www.return12.net/building-latest-llama-cpp-on-nixos/
   # https://github.com/ggml-org/llama.cpp/releases
   llama-cpp = pkgs.llama-cpp-vulkan.overrideAttrs(attrs: rec {
-    version = "9216";
+    version = "9267";
     src = pkgs.fetchFromGitHub {
       owner = "ggml-org";
       repo = "llama.cpp";
@@ -25,7 +25,6 @@ let
       '';
     };
 
-    # webui moved from tools/server/webui to tools/ui in b9216
     npmRoot = "tools/ui";
     # same here, just copy the expected hash from the error message when building.
     npmDepsHash = "sha256-WaEePrEZ7O/7deP2KJhe0AwiSKYA8HOqETmMHUkmBe0=";
@@ -96,7 +95,9 @@ in
             --repeat-penalty 1.0
             -fa on
             -np 1
-            --spec-default";
+            --spec-default
+            --spec-draft-n-max 3
+            --spec-type draft-mtp";
           name = "Qwen3.6 35B A3B MTP";
           description = "Unsloth Qwen3.6 35B A3B MTP, Q4_K_XL quantized, multimodal";
           ttl = 3600;
@@ -115,7 +116,9 @@ in
             --repeat-penalty 1.0
             -fa on
             -np 1
-            --spec-default";
+            --spec-default
+            --spec-draft-n-max 3
+            --spec-type draft-mtp";
           name = "Qwen3.6 27B MTP";
           description = "Unsloth Qwen3.6 27B MTP, Q4_K_XL quantized, multimodal";
           ttl = 3600;
