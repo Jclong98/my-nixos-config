@@ -96,8 +96,7 @@ in
             --repeat-penalty 1.0
             -fa on
             -np 1
-            --spec-type draft-mtp 
-            --spec-draft-n-max 3";
+            --spec-default";
           name = "Qwen3.6 35B A3B MTP";
           description = "Unsloth Qwen3.6 35B A3B MTP, Q4_K_XL quantized, multimodal";
           ttl = 3600;
@@ -116,8 +115,7 @@ in
             --repeat-penalty 1.0
             -fa on
             -np 1
-            --spec-type draft-mtp 
-            --spec-draft-n-max 3";
+            --spec-default";
           name = "Qwen3.6 27B MTP";
           description = "Unsloth Qwen3.6 27B MTP, Q4_K_XL quantized, multimodal";
           ttl = 3600;
