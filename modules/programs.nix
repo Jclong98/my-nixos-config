@@ -20,9 +20,7 @@
     firefox.enable = true;
 
     # Git shell completions (system-wide). Per-user git config is in home-manager.
-    git = {
-      enable = true;
-    };
+    git.enable = true;
 
     neovim = {
       enable = true;

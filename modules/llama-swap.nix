@@ -142,11 +142,16 @@ in
             --port \${PORT} 
             -m ${modelPath}/gemma-4-26B-A4B-it-UD-Q8_K_XL/gemma-4-26B-A4B-it-UD-Q8_K_XL.gguf 
             --mmproj ${modelPath}/gemma-4-26B-A4B-it-UD-Q8_K_XL/mmproj-BF16.gguf 
+            --ctx-size 32768
             --temp 1.0 
             --top-p 0.95 
-            --top-k 64";
+            --top-k 64
+            --min-p 0.0
+            --presence-penalty 0.0
+            --repeat-penalty 1.0
+            -fa on";
           name = "Gemma 4 26B A4B";
-          description = "Unsloth Gemma 4 26B A4B Instruction-Tuned, Q4 quantized, multimodal";
+          description = "Unsloth Gemma 4 26B A4B Instruction-Tuned, Q8_K_XL quantized, multimodal";
           ttl = 3600;
         };
 
