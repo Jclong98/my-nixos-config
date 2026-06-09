@@ -51,38 +51,9 @@ in
       models = {
         # extra flags are recommended by https://huggingface.co/Qwen/Qwen3.6-27B
         "qwen3.6-35b-a3b" = {
-          cmd = "${llama-server} 
-            --port \${PORT} 
-            -m ${modelPath}/Qwen3.6-35B-A3B/Qwen3.6-35B-A3B-UD-Q4_K_M.gguf 
-            --mmproj ${modelPath}/Qwen3.6-35B-A3B/mmproj-BF16.gguf 
-            --temp 0.6 
-            --top-p 0.95 
-            --top-k 20 
-            --min-p 0.0 
-            --presence-penalty 0.0 
-            --repeat-penalty 1.0";
           name = "Qwen3.6 35B A3B";
-          description = "Unsloth Qwen3.6 35B A3B, Q4 quantized";
+          description = "Unsloth Qwen3.6 35B A3B MTP, Q4_K_XL quantized, multimodal";
           ttl = 3600;
-        };
-
-        "qwen3.6-27b" = {
-          cmd = "${llama-server} 
-            --port \${PORT} 
-            -m ${modelPath}/Qwen3.6-27B/Qwen3.6-27B-Q4_K_M.gguf 
-            --mmproj ${modelPath}/Qwen3.6-27B/mmproj-BF16.gguf 
-            --temp 0.6 
-            --top-p 0.95 
-            --top-k 20 
-            --min-p 0.0 
-            --presence-penalty 0.0 
-            --repeat-penalty 1.0";
-          name = "Qwen3.6 27B";
-          description = "Unsloth Qwen3.6 27B, Q4 quantized";
-          ttl = 3600;
-        };
-
-        "qwen3.6-35b-a3b-mtp" = {
           cmd = "${llama-server} 
             --port \${PORT} 
             -m ${modelPath}/Qwen3.6-35B-A3B-MTP/Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf 
@@ -98,12 +69,12 @@ in
             --spec-default
             --spec-draft-n-max 3
             --spec-type draft-mtp";
-          name = "Qwen3.6 35B A3B MTP";
-          description = "Unsloth Qwen3.6 35B A3B MTP, Q4_K_XL quantized, multimodal";
-          ttl = 3600;
         };
 
-        "qwen3.6-27b-mtp" = {
+        "qwen3.6-27b" = {
+          name = "Qwen3.6 27B";
+          description = "Unsloth Qwen3.6 27B MTP, Q4_K_XL quantized, multimodal";
+          ttl = 3600;
           cmd = "${llama-server} 
             --port \${PORT} 
             -m ${modelPath}/Qwen3.6-27B-MTP/Qwen3.6-27B-UD-Q4_K_XL.gguf 
@@ -119,53 +90,30 @@ in
             --spec-default
             --spec-draft-n-max 3
             --spec-type draft-mtp";
-          name = "Qwen3.6 27B MTP";
-          description = "Unsloth Qwen3.6 27B MTP, Q4_K_XL quantized, multimodal";
-          ttl = 3600;
         };
 
-        "gemma-4-31b-it" = {
-          cmd = "${llama-server} 
-            --port \${PORT} 
-            -m ${modelPath}/gemma-4-31B-it/gemma-4-31B-it-Q4_K_M.gguf 
-            --mmproj ${modelPath}/gemma-4-31B-it/mmproj-BF16.gguf 
-            --temp 1.0 
-            --top-p 0.95 
-            --top-k 64";
+        "gemma-4-31b" = {
           name = "Gemma 4 31B";
-          description = "Unsloth Gemma 4 31B Instruction-Tuned, Q4 quantized, multimodal";
+          description = "Unsloth Gemma 4 31B IT-QAT, Q4_K_XL quantized, multimodal";
           ttl = 3600;
-        };
-
-        "gemma-4-26B-A4B-it-UD-Q8_K_XL" = {
           cmd = "${llama-server} 
             --port \${PORT} 
-            -m ${modelPath}/gemma-4-26B-A4B-it-UD-Q8_K_XL/gemma-4-26B-A4B-it-UD-Q8_K_XL.gguf 
-            --mmproj ${modelPath}/gemma-4-26B-A4B-it-UD-Q8_K_XL/mmproj-BF16.gguf 
-            --ctx-size 32768
-            --temp 1.0 
-            --top-p 0.95 
-            --top-k 64
-            --min-p 0.0
-            --presence-penalty 0.0
-            --repeat-penalty 1.0
-            -fa on";
-          name = "Gemma 4 26B A4B";
-          description = "Unsloth Gemma 4 26B A4B Instruction-Tuned, Q8_K_XL quantized, multimodal";
-          ttl = 3600;
-        };
-
-        "gemma-4-e4b-it" = {
-          cmd = "${llama-server} 
-            --port \${PORT} 
-            -m ${modelPath}/gemma-4-E4B-it/gemma-4-E4B-it-Q4_K_M.gguf 
-            --mmproj ${modelPath}/gemma-4-E4B-it/mmproj-BF16.gguf 
+            -m ${modelPath}/gemma-4-31B-it-qat/gemma-4-31B-it-qat-UD-Q4_K_XL.gguf 
             --temp 1.0 
             --top-p 0.95 
             --top-k 64";
-          name = "Gemma 4 E4B";
-          description = "Unsloth Gemma 4 E4B Instruction-Tuned, Q4 quantized, multimodal";
+        };
+
+        "gemma-4-26B-A4B" = {
+          name = "Gemma 4 26B A4B";
+          description = "Unsloth Gemma 4 26B A4B IT-QAT, Q4_K_XL quantized, multimodal";
           ttl = 3600;
+          cmd = "${llama-server} 
+            --port \${PORT} 
+            -m ${modelPath}/gemma-4-26B-A4B-it-qat/gemma-4-26B-A4B-it-qat-UD-Q4_K_XL.gguf 
+            --temp 1.0 
+            --top-p 0.95 
+            --top-k 64";
         };
       };
     };
