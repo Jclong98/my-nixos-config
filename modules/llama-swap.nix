@@ -9,7 +9,7 @@ let
   # https://www.return12.net/building-latest-llama-cpp-on-nixos/
   # https://github.com/ggml-org/llama.cpp/releases
   llama-cpp = pkgs.llama-cpp-vulkan.overrideAttrs(attrs: rec {
-    version = "9464";
+    version = "9585";
     src = pkgs.fetchFromGitHub {
       owner = "ggml-org";
       repo = "llama.cpp";
@@ -17,7 +17,7 @@ let
 
       # when building, it'll be like "specified this but expected this"
       # just copy the expected hash from the error message and put it here.
-      hash = "sha256-9Lcj+jP2xaIwqDY1GI9hLixyGG5OEf18VBk1jakwVsw=";
+      hash = "sha256-XJiCdPy6P+g70EM/o4EPJL2WUUEyroAsZO0hDNslx5Y=";
       leaveDotGit = true;
       postFetch = ''
         git -C "$out" rev-parse --short HEAD > $out/COMMIT
@@ -27,7 +27,7 @@ let
 
     npmRoot = "tools/ui";
     # same here, just copy the expected hash from the error message when building.
-    npmDepsHash = "sha256-Iyg8FpcTKf2UYHuK7mA3cTAqVaLcQPcS0YCa5Qf01Gc=";
+    npmDepsHash = "sha256-pjdbI6NcZRlJVd62xhgbLhWrwFYwgsIwjORqvo1+VD8=";
   });
   llama-server = lib.getExe' llama-cpp "llama-server";
   modelPath = "/var/lib/llama-swap/models";
