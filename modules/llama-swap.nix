@@ -67,12 +67,12 @@ in
             -fa on
             -np 1
             --spec-default
-            --spec-draft-n-max 3
+            --spec-draft-n-max 6
             --spec-type draft-mtp";
         };
 
         "qwen3.6-27b" = {
-          name = "Qwen3.6 27B";
+          name = "Qwen3.6 27B mtp 6";
           description = "Unsloth Qwen3.6 27B MTP, Q4_K_XL quantized, multimodal";
           ttl = 3600;
           cmd = "${llama-server} 
@@ -88,7 +88,7 @@ in
             -fa on
             -np 1
             --spec-default
-            --spec-draft-n-max 3
+            --spec-draft-n-max 6
             --spec-type draft-mtp";
         };
 
