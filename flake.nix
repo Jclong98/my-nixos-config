@@ -18,7 +18,7 @@
           ./home.nix
           ./modules/desktop.nix
           ./modules/programs.nix
-          ./modules/llama-swap.nix
+          ./modules/llama.nix
           ./modules/openrgb.nix
           ./modules/llm-rgb.nix
         ];
