@@ -48,6 +48,7 @@ in
         "--models-dir" modelPath
         "--host" "0.0.0.0"
         "--port" "8080"
+        "--models-max" "1"
       ];
       Restart = "on-failure";
       # DynamicUser + ProtectHome blocks access to ~/.cache.
