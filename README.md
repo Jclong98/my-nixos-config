@@ -104,3 +104,9 @@ The new model will now appear in llama-server's model list and be available at t
 ```sh
 curl http://localhost:8080/v1/models
 ```
+
+### Running a text to speech model
+
+```sh
+llama-tts -hf ggml-org/Qwen3-TTS-12Hz-1.7B-Base-GGUF -p "test speech" --tts-lang en --tts-speaker-file ./tts/reference.mp3 --output ./tts/out.wav
+```
