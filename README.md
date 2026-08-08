@@ -107,6 +107,8 @@ curl http://localhost:8080/v1/models
 
 ### Running a text to speech model
 
+`--tts-lang` can be `zh`, `en`, `de`, `it`, `pt`, `es`, `ja`, `ko`, `fr`, `ru` (default: `en`)
+
 ```sh
 llama-tts -hf ggml-org/Qwen3-TTS-12Hz-1.7B-Base-GGUF -p "test speech" --tts-lang en --tts-speaker-file ./tts/reference.mp3 --output ./tts/out.wav
 ```
