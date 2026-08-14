@@ -9,7 +9,7 @@ let
   # https://www.return12.net/building-latest-llama-cpp-on-nixos/
   # https://github.com/ggml-org/llama.cpp/releases
   llama-cpp = pkgs.llama-cpp-vulkan.overrideAttrs(attrs: rec {
-    version = "10361";
+    version = "10413";
     src = pkgs.fetchFromGitHub {
       owner = "ggml-org";
       repo = "llama.cpp";
@@ -30,6 +30,10 @@ let
   });
   llama-server = lib.getExe' llama-cpp "llama-server";
   modelPath = "/var/lib/llama-swap/models";
+  # Per-model arguments (INI), versioned in the repo at models.ini.
+  # Written into the nix store (content-addressed): editing the file
+  # changes the unit's ExecStart, so nixos-rebuild restarts the service.
+  modelsPreset = pkgs.writeText "llama-models.ini" (builtins.readFile ../models.ini);
 in
 {
   # add llama-cpp to the system packages.
@@ -45,6 +49,7 @@ in
       ExecStart = lib.escapeShellArgs [
         (lib.getExe' llama-cpp "llama-server")
         "--models-dir" modelPath
+        "--models-preset" modelsPreset
         "--host" "0.0.0.0"
         "--port" "8080"
         "--models-max" "1"

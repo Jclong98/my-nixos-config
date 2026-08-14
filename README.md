@@ -105,6 +105,23 @@ The new model will now appear in llama-server's model list and be available at t
 curl http://localhost:8080/v1/models
 ```
 
+### Per-model arguments
+
+`models.ini` in the repo root defines per-model CLI arguments. It is baked
+into the nix store and passed to the service via `--models-preset`.
+
+- `[*]` section: defaults shared by all models
+- one section per model id (`curl -s localhost:8080/models | jq '.data[].id'`)
+- keys are CLI args without the leading dashes (`n_ctx`, `n_gpu_layers`, …);
+  see `llama-server --help`
+- preset-only keys: `load-on-startup`, `stop-timeout`
+
+Edit `models.ini`, then rebuild — the restart happens automatically:
+
+```sh
+sudo nixos-rebuild switch --flake ~/my-nixos-config#guillermo
+```
+
 ### Running a text to speech model
 
 `--tts-lang` can be `zh`, `en`, `de`, `it`, `pt`, `es`, `ja`, `ko`, `fr`, `ru` (default: `en`)
