@@ -59,9 +59,7 @@ llama-server --host 0.0.0.0 --port 3333 -hf unsloth/Qwen3.6-35B-A3B-GGUF:Q4_K_M
 
 ## Adding a New Model
 
-Models are stored on disk at `/var/lib/llama-swap/models/`. llama-server's
-router mode automatically discovers any model placed there — no Nix config
-changes are needed.
+Run the model locally with the above command to put it in the cache (`/home/guillermo/.cache/huggingface/hub`). Move the model into a new folder inside `/var/lib/llama-swap/models/`. Update models.ini to include the new model.
 
 ### Place the model files on disk
 
