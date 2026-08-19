@@ -1,12 +1,22 @@
-# Main system configuration for guillermo
+# Host entry point for guillermo.
 # A KDE Plasma 6 desktop with development tools.
-# Loaded by flake.nix → nixos/configuration.nix
+# flake.nix loads this file plus home/guillermo.nix; module imports live here.
 
-{ inputs, config, pkgs, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
     ./hardware-configuration.nix
+    ./modules/desktop.nix
+    ./modules/programs.nix
+    ./modules/llama.nix
+    ./modules/openrgb.nix
+    ./modules/llm-rgb.nix
   ];
 
   # Allow unfree packages
@@ -26,8 +36,14 @@
   networking.networkmanager.enable = true;
 
   # Open ports in the firewall (used by open-webui on port 8080).
-  networking.firewall.allowedTCPPorts = [ 8080 3333 ];
-  networking.firewall.allowedUDPPorts = [ 8080 3333 ];
+  networking.firewall.allowedTCPPorts = [
+    8080
+    3333
+  ];
+  networking.firewall.allowedUDPPorts = [
+    8080
+    3333
+  ];
 
   time.timeZone = "America/Phoenix";
   i18n.defaultLocale = "en_US.UTF-8";

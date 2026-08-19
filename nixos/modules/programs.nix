@@ -1,5 +1,6 @@
-# Shell integrations, system packages, and the NixOS user account setup.
-# Home Manager (configuration.nix) handles per-user dotfiles and programs.
+# Shell integrations and system-wide packages.
+# The user account lives in nixos/configuration.nix;
+# Home Manager (home/guillermo.nix) handles per-user dotfiles and programs.
 
 { config, pkgs, ... }:
 

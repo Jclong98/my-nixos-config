@@ -15,12 +15,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./nixos/configuration.nix
-          ./home.nix
-          ./modules/desktop.nix
-          ./modules/programs.nix
-          ./modules/llama.nix
-          ./modules/openrgb.nix
-          ./modules/llm-rgb.nix
+          ./home/guillermo.nix
         ];
       };
     };

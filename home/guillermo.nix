@@ -1,5 +1,5 @@
 # Home Manager configuration for guillermo.
-# Loaded via home-manager.nixosModules.home-manager in flake.nix.
+# Loaded by flake.nix; the home-manager nixosModule is imported below.
 
 { inputs, pkgs, ... }:
 
