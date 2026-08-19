@@ -33,7 +33,7 @@ nix-collect-garbage -d
 
 ## LLM (llama-server)
 
-The LLM inference stack is managed declaratively via `modules/llama.nix`.
+The LLM inference stack is managed declaratively via `nixos/modules/llama.nix`.
 Models are served through **llama-server** running in router mode on port **8080**.
 The router automatically discovers models placed in `/var/lib/llama-server/models/`.
 
@@ -57,9 +57,13 @@ curl http://localhost:8080/v1/models
 llama-server --host 0.0.0.0 --port 3333 -hf unsloth/Qwen3.6-35B-A3B-GGUF:Q4_K_M
 ```
 
+Port 3333 is not in the firewall permanently. To test it from another
+machine, temporarily add `3333` to `networking.firewall.allowedTCPPorts` in
+`nixos/configuration.nix`, rebuild, then remove it again.
+
 ## Adding a New Model
 
-Run the model locally with the above command to put it in the cache (`/home/guillermo/.cache/huggingface/hub`). Move the model into a new folder inside `/var/lib/llama-server/models/`. Update models.ini to include the new model.
+Run the model locally with the above command to put it in the cache (`/home/guillermo/.cache/huggingface/hub`). Move the model into a new folder inside `/var/lib/llama-server/models/`. Update `nixos/modules/models.ini` to include the new model.
 
 ### Place the model files on disk
 
@@ -91,7 +95,7 @@ Copy your `.gguf` file(s) into a directory under `/var/lib/llama-server/models/`
 sudo systemctl restart llama-server
 ```
 
-Or rebuild if you changed `modules/llama.nix`:
+Or rebuild if you changed `nixos/modules/llama.nix`:
 
 ```sh
 sudo nixos-rebuild switch --flake ~/my-nixos-config#guillermo
@@ -105,7 +109,7 @@ curl http://localhost:8080/v1/models
 
 ### Per-model arguments
 
-`models.ini` in the repo root defines per-model CLI arguments. It is baked
+`nixos/modules/models.ini` (next to `llama.nix`) defines per-model CLI arguments. It is baked
 into the nix store and passed to the service via `--models-preset`.
 
 - `[*]` section: defaults shared by all models
@@ -114,7 +118,7 @@ into the nix store and passed to the service via `--models-preset`.
   see `llama-server --help`
 - preset-only keys: `load-on-startup`, `stop-timeout`
 
-Edit `models.ini`, then rebuild — the restart happens automatically:
+Edit `nixos/modules/models.ini`, then rebuild — the restart happens automatically:
 
 ```sh
 sudo nixos-rebuild switch --flake ~/my-nixos-config#guillermo
