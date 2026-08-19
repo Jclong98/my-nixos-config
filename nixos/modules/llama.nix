@@ -37,7 +37,8 @@ let
 in
 {
   # add llama-cpp to the system packages.
-  # this will be merged and *should* use the version from the overrideAttrs above.
+  # this is merged with modules/programs.nix and uses the build from the
+  # overrideAttrs above.
   environment.systemPackages = [ llama-cpp ];
 
   # llama-server in router mode
@@ -60,8 +61,16 @@ in
         "1"
       ];
       Restart = "on-failure";
-      # DynamicUser + ProtectHome blocks access to ~/.cache.
-      # HOME=/tmp gives llama-server a writable path for Vulkan shader cache.
+
+      # Sandbox: models are read from /var/lib/llama-server, the only place
+      # the server may write. ProtectHome keeps it out of user home dirs;
+      # HOME=/tmp still gives it a writable dir for the Vulkan shader cache
+      # (/tmp is a separate mount, so it stays writable under strict).
+      ProtectSystem = "strict";
+      ProtectHome = "read-only";
+      ReadWritePaths = [ "/var/lib/llama-server" ];
+      PrivateTmp = true;
+      NoNewPrivileges = true;
       Environment = [ "HOME=/tmp" ];
     };
   };
