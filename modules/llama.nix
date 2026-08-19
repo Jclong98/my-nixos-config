@@ -29,7 +29,7 @@ let
     npmDepsHash = "sha256-2Q7XhaLAArmviOLdQsNbYTfdyDE5pW9lR26cRHEVl9k=";
   });
   llama-server = lib.getExe' llama-cpp "llama-server";
-  modelPath = "/var/lib/llama-swap/models";
+  modelPath = "/var/lib/llama-server/models";
   # Per-model arguments (INI), versioned in the repo at models.ini.
   # Written into the nix store (content-addressed): editing the file
   # changes the unit's ExecStart, so nixos-rebuild restarts the service.

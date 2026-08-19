@@ -35,7 +35,7 @@ nix-collect-garbage -d
 
 The LLM inference stack is managed declaratively via `modules/llama.nix`.
 Models are served through **llama-server** running in router mode on port **8080**.
-The router automatically discovers models placed in `/var/lib/llama-swap/models/`.
+The router automatically discovers models placed in `/var/lib/llama-server/models/`.
 
 ### Test llama-server
 
@@ -59,16 +59,16 @@ llama-server --host 0.0.0.0 --port 3333 -hf unsloth/Qwen3.6-35B-A3B-GGUF:Q4_K_M
 
 ## Adding a New Model
 
-Run the model locally with the above command to put it in the cache (`/home/guillermo/.cache/huggingface/hub`). Move the model into a new folder inside `/var/lib/llama-swap/models/`. Update models.ini to include the new model.
+Run the model locally with the above command to put it in the cache (`/home/guillermo/.cache/huggingface/hub`). Move the model into a new folder inside `/var/lib/llama-server/models/`. Update models.ini to include the new model.
 
 ### Place the model files on disk
 
-Copy your `.gguf` file(s) into a directory under `/var/lib/llama-swap/models/`.
+Copy your `.gguf` file(s) into a directory under `/var/lib/llama-server/models/`.
 
 **Text-only model:**
 
 ```
-/var/lib/llama-swap/models/
+/var/lib/llama-server/models/
 └── my-model/
     └── my-model-Q4_K_M.gguf
 ```
@@ -76,7 +76,7 @@ Copy your `.gguf` file(s) into a directory under `/var/lib/llama-swap/models/`.
 **Multimodal model** (requires a projection file too):
 
 ```
-/var/lib/llama-swap/models/
+/var/lib/llama-server/models/
 └── my-model/
     ├── my-model-Q4_K_M.gguf
     └── mmproj-BF16.gguf
