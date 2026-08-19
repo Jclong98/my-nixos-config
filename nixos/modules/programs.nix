@@ -5,18 +5,6 @@
 { config, pkgs, ... }:
 
 {
-  # System user account — groups and basic info.
-  # Per-user config (dotfiles, git, etc.) is in home-manager.
-  users.users.guillermo = {
-    isNormalUser = true;
-    description = "guillermo";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "docker"
-    ];
-  };
-
   programs = {
     firefox.enable = true;
 

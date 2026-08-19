@@ -17,6 +17,7 @@
     ./modules/llama.nix
     ./modules/openrgb.nix
     ./modules/llm-rgb.nix
+    # ./modules/minecraft.nix  # uncomment to enable the Minecraft server
   ];
 
   # Allow unfree packages
@@ -34,16 +35,21 @@
 
   networking.hostName = "guillermo";
   networking.networkmanager.enable = true;
+  # Note: services open their own firewall ports (llama-server: 8080 in
+  # nixos/modules/llama.nix). For one-off test ports, add them here,
+  # rebuild, then remove them again.
 
-  # Open ports in the firewall (used by open-webui on port 8080).
-  networking.firewall.allowedTCPPorts = [
-    8080
-    3333
-  ];
-  networking.firewall.allowedUDPPorts = [
-    8080
-    3333
-  ];
+  # Local user account — per-user config (dotfiles, git, packages) is in
+  # home/guillermo.nix via Home Manager.
+  users.users.guillermo = {
+    isNormalUser = true;
+    description = "guillermo";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+    ];
+  };
 
   time.timeZone = "America/Phoenix";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -89,13 +95,9 @@
     options = "--delete-older-than 7d";
   };
 
-  # LLM RGB — turns fans red when the LLM is responding
-  # services.llm-rgb = {
-  #   enable = false;
-  #   activeColor = "FF0000";  # red while generating
-  #   idleColor = "FFFF33";    # yellow when idle
-  #   port = 8080;
-  # };
+  # LLM RGB — turns fans red while llama-server is serving requests.
+  # modules/llm-rgb.nix defines the options (colors, timeout, poll interval).
+  # services.llm-rgb.enable = true;
 
   system.stateVersion = "26.05";
 }

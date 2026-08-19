@@ -1,5 +1,5 @@
 # Minecraft Java Edition server (declarative mode).
-# To enable, uncomment the import in flake.nix and rebuild.
+# To enable, uncomment the import in nixos/configuration.nix and rebuild.
 #
 # The server is managed via /var/lib/minecraft and its configuration
 # is fully declarative — server.properties, whitelist, etc. are all
