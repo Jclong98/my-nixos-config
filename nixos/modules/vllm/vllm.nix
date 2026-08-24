@@ -13,14 +13,28 @@
 }:
 
 let
-  # This module lives in nixos/modules/vllm/, next to docker-compose.yml.
-  vllmDir = ./.;
   compose = lib.getExe pkgs.docker-compose;
 in
 {
   options.services.vllm.enable = lib.mkEnableOption "vLLM OpenAI server (docker container)";
 
+  # Must be the on-disk checkout, NOT the store copy: `./` in a module
+  # resolves to /nix/store/...-source/, and the gitignored models/ cache
+  # does not exist there (and can't be created; the store is read-only).
+  options.services.vllm.composeDir = lib.mkOption {
+    type = lib.types.str;
+    default = "/home/guillermo/my-nixos-config/nixos/modules/vllm";
+    description = "Directory containing docker-compose.yml and the gitignored models/ cache.";
+  };
+
   config = lib.mkIf config.services.vllm.enable {
+    assertions = [
+      {
+        assertion = builtins.pathExists "${config.services.vllm.composeDir}/models";
+        message = "services.vllm.composeDir is missing the gitignored models/ directory (got ${config.services.vllm.composeDir})";
+      }
+    ];
+
     systemd.services.vllm = {
       description = "vLLM OpenAI server (docker container)";
 
@@ -33,7 +47,7 @@ in
         Type = "oneshot";
         RemainAfterExit = true;
         User = "guillermo";
-        WorkingDirectory = vllmDir;
+        WorkingDirectory = config.services.vllm.composeDir;
 
         # `up -d --wait` blocks until the /health probe passes; loading
         # the 20GB model can take several minutes.
