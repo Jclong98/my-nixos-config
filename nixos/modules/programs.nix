@@ -38,5 +38,6 @@
     home-manager
     nvtopPackages.intel
     intel-oneapi-toolkit
+    cmake
   ];
 }
