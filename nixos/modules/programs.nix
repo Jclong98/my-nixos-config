@@ -37,7 +37,6 @@
     nixfmt
     home-manager
     nvtopPackages.intel
-    intel-oneapi-toolkit
-    cmake
+    python313Packages.huggingface-hub
   ];
 }

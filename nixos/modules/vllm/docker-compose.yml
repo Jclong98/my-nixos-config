@@ -1,0 +1,23 @@
+services:
+  vllm:
+    image: vllm/vllm-openai-xpu:v0.27.1
+    container_name: vllm
+    command: >
+      cyankiwi/Qwen3.8-27B-AWQ-INT4
+      --gpu-memory-utilization 0.95
+      --download-dir /models
+      --port 8000
+      --no-enable-prefix-caching
+    shm_size: "32gb"
+    ulimits:
+      memlock: -1
+      stack: 67108864
+    devices:
+      - /dev/dri:/dev/dri
+    group_add:
+      - render
+      - video
+    volumes:
+      - ./models:/models
+    ports:
+      - "8000:8000"

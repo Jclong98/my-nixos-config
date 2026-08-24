@@ -38,6 +38,9 @@
   # Note: services open their own firewall ports (llama-server: 8080 in
   # nixos/modules/llama.nix). For one-off test ports, add them here,
   # rebuild, then remove them again.
+  networking.firewall.allowedTCPPorts = [
+    8000  # vllm docker-compose
+  ];
 
   # Local user account — per-user config (dotfiles, git, packages) is in
   # home/guillermo.nix via Home Manager.
