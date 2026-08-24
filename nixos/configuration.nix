@@ -17,7 +17,6 @@
     # ./modules/llama.nix
     ./modules/openrgb.nix
     ./modules/llm-rgb.nix
-    ./modules/vllm/vllm.nix
     # ./modules/minecraft.nix  # uncomment to enable the Minecraft server
   ];
 
@@ -36,8 +35,7 @@
 
   networking.hostName = "guillermo";
   networking.networkmanager.enable = true;
-  # Note: services open their own firewall ports (llama-server: 8080 in
-  # nixos/modules/llama.nix, vllm: 8000 in nixos/modules/vllm/vllm.nix).
+  networking.firewall.allowedTCPPorts = [ 8000 ]; # SSH and vllm
   # For one-off test ports, add them here, rebuild, then remove them again.
 
   # Local user account — per-user config (dotfiles, git, packages) is in
@@ -79,9 +77,6 @@
 
   # Docker daemon.
   virtualisation.docker.enable = true;
-
-  # vLLM OpenAI server (docker container; compose file in modules/vllm/).
-  services.vllm.enable = true;
 
   # Console keymap.
   console.keyMap = "us";
