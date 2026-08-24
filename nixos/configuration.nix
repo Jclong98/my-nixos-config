@@ -48,6 +48,8 @@
       "networkmanager"
       "wheel"
       "docker"
+      "render"
+      "video"
     ];
   };
 
