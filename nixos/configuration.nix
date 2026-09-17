@@ -14,10 +14,9 @@
     ./hardware-configuration.nix
     ./modules/desktop.nix
     ./modules/programs.nix
-    # ./modules/llama.nix
+    ./modules/llama.nix
     ./modules/openrgb.nix
     ./modules/llm-rgb.nix
-    # ./modules/minecraft.nix  # uncomment to enable the Minecraft server
   ];
 
   # Allow unfree packages
@@ -35,7 +34,7 @@
 
   networking.hostName = "guillermo";
   networking.networkmanager.enable = true;
-  networking.firewall.allowedTCPPorts = [ 8000 ]; # SSH and vllm
+  networking.firewall.allowedTCPPorts = [ 8000 25565 ]; # vllm, minecraft server
   # For one-off test ports, add them here, rebuild, then remove them again.
 
   # Local user account — per-user config (dotfiles, git, packages) is in

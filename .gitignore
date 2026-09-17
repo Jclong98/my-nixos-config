@@ -1,4 +1,5 @@
 tts
 result
 **/llama.cpp
-models
+docker/vllm/models
+docker/minecraft/data/
