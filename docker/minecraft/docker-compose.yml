@@ -11,14 +11,20 @@ services:
       MOTD: "minecwaft wittwy"
       USE_AIKAR_FLAGS: "true"
       DIFFICULTY: "3"
-      VIEW_DISTANCE: "16"
+      VIEW_DISTANCE: "32"
       SEED: "2026-09-15"
       LEVEL: "2026-09-15"
       OPS: |-
         c097aec3-ac9a-4997-a8e9-9822e6b7b07c
+        f68de0ce-fada-4a94-898e-6505486c7dbb
+        00d489b5-9e02-40bd-a306-8b8baffcc569
+        39ad61e4-ee67-4a91-a532-0415fa2b72e3
       ENABLE_WHITELIST: "true"
       WHITELIST: |-
         c097aec3-ac9a-4997-a8e9-9822e6b7b07c
+        f68de0ce-fada-4a94-898e-6505486c7dbb
+        00d489b5-9e02-40bd-a306-8b8baffcc569
+        39ad61e4-ee67-4a91-a532-0415fa2b72e3
     volumes:
       - "./data:/data"
     restart: always
