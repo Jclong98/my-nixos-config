@@ -7,6 +7,7 @@ services:
       - "25565:25565"
     environment:
       EULA: "TRUE"
+      TYPE: "FABRIC"
       MEMORY: "6144M"
       MOTD: "minecwaft wittwy"
       USE_AIKAR_FLAGS: "true"
@@ -14,6 +15,9 @@ services:
       VIEW_DISTANCE: "32"
       SEED: "2026-09-15"
       LEVEL: "2026-09-15"
+      MODRINTH_PROJECTS: |-
+        fabric-api
+        distanthorizons
       OPS: |-
         c097aec3-ac9a-4997-a8e9-9822e6b7b07c
         f68de0ce-fada-4a94-898e-6505486c7dbb
